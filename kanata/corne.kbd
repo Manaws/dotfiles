@@ -1,0 +1,58 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  lalt           spc            ralt
+  a s d f j    k    l    ;
+)
+
+(defchords hrm_mods 35
+  (d) d
+  (f) f
+  (j) j
+  (k) k
+  (l) l
+  (a) a
+  (;) ;
+  (s) s
+  (d f) lsft
+  (j k) rsft 
+  (s d) lmet
+  (k l) rmet 
+  (a s) lctl
+  (l ;) rctl
+  (j l) esc
+)
+
+(defalias
+  bsc_nav (tap-hold-press 180 180 bspc (layer-toggle nav_layer))
+
+  ent_num (tap-hold-press 180 180 ret (layer-toggle num_layer))
+)
+
+(deflayer base
+  @bsc_nav       spc            @ent_num
+ (chord hrm_mods a)
+ (chord hrm_mods s)
+ (chord hrm_mods d)
+ (chord hrm_mods f)
+ (chord hrm_mods j)
+ (chord hrm_mods k)
+ (chord hrm_mods l)
+ (chord hrm_mods ;)
+)
+
+;; --- Layer 1: Navigation (Halte linken Alt) ---
+;; Physisch J/K/L/; -> Pfeiltasten
+(deflayer nav_layer
+  _              _              _
+  _ _ _ _ left down up right
+)
+
+;; --- Layer 2: Zahlen (Halte rechten Alt) ---
+;; Physisch J/K/L/; -> Zahlen
+(deflayer num_layer
+  _              _              _
+  _ _ _ _ 1    2    3    4
+)
